@@ -28,4 +28,8 @@ hs_err_pid*
 
 # End of https://www.toptal.com/developers/gitignore/api/java
 
+<<<<<<< HEAD
 *.iws
+=======
+.idea/
+>>>>>>> f02e3b8b62790773f1c4c7ff963c5178071cf35a
