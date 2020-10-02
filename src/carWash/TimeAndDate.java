@@ -3,7 +3,7 @@ package src.carWash;
 import java.util.Date;
 //import java.util.SimpleDateFormat;
 
-public class Timendate {
+public class TimeAndDate {
     public static void main(String[] args) {
         localTime();
     }

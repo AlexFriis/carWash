@@ -1,0 +1,13 @@
+Time & date discount solutions:
+
+    1:
+    import time&date
+        @Override - ability to test program
+
+    2:
+    if (!weekend && time < 14:00) {
+        return true;
+        }
+
+
+sss

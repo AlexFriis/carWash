@@ -9,6 +9,7 @@ public class Design {
     public static String headline() { return ("----------------------SuperShine Car Wash----------------------"); }
     public static String exitSystemMsg() { return ("Exiting system, have a shine-tastic day!"); }
     public static String defaultMenuMsg() { return ("Input format is not valid!"); }
+    public static String exitToMainMenuMsg() { return ("Exiting to main menu!"); }
     public static void inputMismatchExceptionMsg() {
         System.out.println("Please enter the right input format!");
     }
