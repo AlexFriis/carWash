@@ -1,2 +1,0 @@
-# carWash
-Car Wash assignment
