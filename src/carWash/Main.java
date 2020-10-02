@@ -1,4 +1,4 @@
-package carWash;
+package src.carWash;
 
 	public class Main {
 
