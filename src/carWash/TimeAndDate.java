@@ -2,25 +2,28 @@ package src.carWash;
 
 import java.util.Date;
 import java.util.Scanner;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
-public class TimeAndDate {
-    private static void outputText(String text) {
+public class Price {
+    private Scanner scn = new Scanner(System.in);
+
+    private void outputText(String text) {
         System.out.println(text);
     }
 
-    public static void main(String[] args) {
+    public void main(String[] args) {
         inputTime();
         localTime();
-
     }
 
-    private static void localTime() {
+    private void localTime() {
         Date date = new java.util.Date();
         System.out.println(date);
     }
 
-    public static void inputTime() {
-        Scanner scan = new Scanner(System.in);
+    public void inputTime() {
+        
 
 
         outputText("Please enter the day you would like to visit: ");
@@ -39,7 +42,7 @@ public class TimeAndDate {
 /*
     }
     public static void boolean isWeekend() {
-        String day[] = {mon, tue, wed, thur, fri, sat, sun}
+        
         if (day == sun || day == sat) {
             return true;
         }

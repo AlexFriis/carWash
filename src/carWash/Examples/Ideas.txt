@@ -10,4 +10,33 @@ Time & date discount solutions:
         }
 
 
-sss
+
+
+    /**
+     * Prints a menu with any amount of menu options.
+     * @param menuNameString name of the menu as *****Menu name*****.
+     * @param menuOptions Variable length argument for options, self-numbered.
+     * <p>
+     * Example:
+     * <p>
+     * {@code Design.printMenu("Wash Menu", "Economy Wash", "Standard Wash", "De Luxe Wash", "Exit to main menu");}
+     */
+    public static void printMenu(String menuNameString, String ... menuOptions){
+        System.out.println(headline());
+        System.out.println(menuBars());
+        System.out.println("*****" + menuNameString + "*****");
+        if (menuOptions.length > 0) {
+            for (int i = 0; i < menuOptions.length; i++) {
+                System.out.println(i+1 + ". " + menuOptions[i]);
+            }
+        }
+        System.out.println(menuBars());
+    }
+example
+
+Design.printMenu(
+            "Wash Menu",
+            "Economy Wash",
+            "Standard Wash",
+            "De Luxe Wash",
+            "Exit to main menu"
