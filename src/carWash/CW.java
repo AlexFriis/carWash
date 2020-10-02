@@ -18,8 +18,9 @@ public class CW {
      */
     public static void printMenu(String menuNameString, String ... menuOptions){
         System.out.println(headline());
-        System.out.println(menuBars());
-        System.out.println("*****" + menuNameString + "*****");
+        newLine();
+        System.out.println("*" + menuNameString + "*");
+        newLine();
         if (menuOptions.length > 0) {
             for (int i = 0; i < menuOptions.length; i++) {
                 System.out.println(i+1 + ". " + menuOptions[i]);
