@@ -14,13 +14,13 @@ public class Checkout {
         var scanner = new Scanner(System.in);
         int timeOfDay;
         int dayOfWeek;
-        Design.printMenu("Weekdays", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday");
+        CW.printMenu("Weekdays", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday");
         do {
-            Design.outputText("Please enter right input.");
+            CW.outputText("Please enter right input.");
             dayOfWeek = scanner.nextInt(); 
         } while (dayOfWeek < 1 || dayOfWeek > 7);
         do {
-            Design.outputText("Please enter right input.");
+            CW.outputText("Please enter right input.");
             timeOfDay = scanner.nextInt(); 
         } while (timeOfDay < 0 || timeOfDay > 23);
         

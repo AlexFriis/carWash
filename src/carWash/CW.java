@@ -1,6 +1,8 @@
 package src.carWash;
 
-public class Design {
+//Console Writer
+
+public class CW {
     public static void newLine() {
         System.out.println();
     }
@@ -47,12 +49,12 @@ public class Design {
         return ("Input format is not valid!");
     }
 
-    public static void exitToMainMenuMsg() {
-        this.outputText("Exiting to main menu!");
+    public static String exitToMainMenuMsg() {
+        return ("Exiting to main menu!");
     }
 
-    public static void inputMismatchExceptionMsg() {
-        System.out.println("Please enter the right input format!");
+    public static String inputMismatchExceptionMsg() {
+        return ("Please enter the right input format!");
     }
 
     public static void outputText(String text) {
