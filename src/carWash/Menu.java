@@ -63,9 +63,11 @@ public class Menu {
                     // Function that adds new washcard
                     mainMenu();
                 case 3:
+                    CW.newLine();
                     outputText(CW.exitSystemMsg());
                     break;
                 default:
+                    CW.newLine();
                     outputText(CW.defaultMenuMsg());
                     secondMenu();
                     break;
@@ -106,9 +108,11 @@ public class Menu {
                     adminMenu();
                     break;
                 case 4:
+                    CW.newLine();
                     outputText(CW.exitSystemMsg());
                     break;
                 default:
+                    CW.newLine();
                     outputText(CW.defaultMenuMsg());
                     mainMenu();
                     break;
@@ -155,6 +159,7 @@ public class Menu {
                         mainMenu();
                         break;
                     default:
+                        CW.newLine();
                         outputText(CW.defaultMenuMsg());
                         washCardMenu();
                         break;
@@ -203,6 +208,7 @@ public class Menu {
                     mainMenu();
                     break;
                 default:
+                    CW.newLine();
                     outputText(CW.defaultMenuMsg());
                     washMenu();
                     break;
@@ -269,6 +275,7 @@ public class Menu {
                         mainMenu();
                         break;
                     default:
+                        CW.newLine();
                         outputText(CW.defaultMenuMsg());
                         washCardMenu();
                         break;
