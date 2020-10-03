@@ -1,6 +1,7 @@
 package src.carWash;
 
 //haderfc
+//TODO: Fix double print/case 3 in secondMenu
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -15,6 +16,9 @@ public class Menu {
             switch (in.nextInt()) {
                 case 1:
                     CW.newLine();
+                    Price p;
+                    p = new Price();
+                    p.printTimeAndDate();
                     // Time and date function
                     // print current time and date
                     secondMenu();
@@ -24,9 +28,11 @@ public class Menu {
                     // specify time
                     secondMenu();
                 case 3:
+                    CW.newLine();
                     outputText(CW.exitSystemMsg());
                     break;
                 default:
+                    CW.newLine();
                     outputText(CW.defaultMenuMsg());
                     firstMenu();
                     break;
