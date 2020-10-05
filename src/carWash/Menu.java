@@ -122,11 +122,12 @@ public class Menu {
         outputText(Design.headline());
         outputText(Design.menuBars());
         outputText("*****Main menu*****");
-        outputText("1. Wash your car");
+        outputText("1. Select carwash");
         outputText("2. Manage Wash Card");
         outputText("3. Admin Menu");
         outputText("4. Exit program");
         outputText(Design.menuBars());
+        // Tester git gut
     }
     public static void washCardMenu() {
         while (userContinue) {
