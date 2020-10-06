@@ -16,11 +16,11 @@ public class Checkout {
         int dayOfWeek;
         CW.printMenu("Weekdays", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday");
         do {
-            CW.outputText("Please enter right input.");
+            CW.print("Please enter right input.");
             dayOfWeek = scanner.nextInt(); 
         } while (dayOfWeek < 1 || dayOfWeek > 7);
         do {
-            CW.outputText("Please enter right input.");
+            CW.print("Please enter right input.");
             timeOfDay = scanner.nextInt(); 
         } while (timeOfDay < 0 || timeOfDay > 23);
         

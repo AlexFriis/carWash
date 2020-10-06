@@ -49,7 +49,7 @@ public class CW {
     public static String defaultMenuMsg() {
         return ("Input format is not valid!");
     }
-
+    public static String noWashCardsRegisteredMsg() { return "System has no WashCards registered! Returning to menu"; }
     public static String exitToMainMenuMsg() {
         return ("Exiting to main menu!");
     }
@@ -58,7 +58,7 @@ public class CW {
         return ("Please enter the right input format!");
     }
 
-    public static void outputText(String text) {
+    public static void print(String text) {
         System.out.println(text);
     }
 }
