@@ -1,284 +1,275 @@
 package src.carWash;
 
+//haderfc
+//TODO: Fix double print/case 3 in secondMenu
+
 import java.util.InputMismatchException;
-import java.util.Scanner;
 
 public class Menu {
-    private static final Scanner in = new Scanner(System.in);
     private static boolean userContinue = true;
+
     public static void firstMenu() {
-        firstMenuOptions();
         try {
-            switch(in.nextInt()) {
+            firstMenuOptions();
+            switch (UserInput.intIn.nextInt()) {
                 case 1:
-                    Design.newLine();
-                    //Time and date function
-                    //print current time and date
-                    secondMenu();
+                    CW.newLine();
+                    Price p;
+                    p = new Price();
+                    p.printTimeAndDate();
+                    CW.newLine();
+                    // Time and date function
+                    // print current time and date
+                    mainMenu();
+                    break;
                 case 2:
-                    Design.newLine();
-                    //User Specified time and date function
-                    //specify time
-                    secondMenu();
+                    CW.newLine();
+                    // User Specified time and date function
+                    // specify time
+                    mainMenu();
+                    break;
                 case 3:
-                    outputText(Design.exitSystemMsg());
+                    CW.newLine();
+                    CW.print(CW.exitSystemMsg());
                     break;
                 default:
-                    outputText(Design.defaultMenuMsg());
+                    CW.newLine();
+                    CW.print(CW.defaultMenuMsg());
                     firstMenu();
                     break;
             }
-        }
-        catch (InputMismatchException e) {
-            Design.newLine();
-            Design.inputMismatchExceptionMsg();
-            in.next();
-            Design.newLine();
+        } catch (InputMismatchException e) {
+            CW.newLine();
+            CW.print(CW.inputMismatchExceptionMsg());
+            UserInput.intIn.next();
+            CW.newLine();
             firstMenu();
         }
-        Design.newLine();
+        CW.newLine();
     }
+
     private static void firstMenuOptions() {
-        outputText(Design.headline());
-        outputText(Design.menuBars());
-        outputText("1. Import time & date from computer");
-        outputText("2. Specify time & date");
-        outputText("3. Exit program");
-        outputText(Design.menuBars());
+        CW.printMenu(
+                "First menu",
+                "Import time & date from computer",
+                "Specify time & date",
+                "Exit program"
+        );
     }
-    public static void secondMenu() {
-        secondMenuOptions();
-        try {
-            switch(in.nextInt()) {
-                case 1:
-                    Design.newLine();
-                    //function that uses existing wash card by providing ID
-                    mainMenu();
-                case 2:
-                    Design.newLine();
-                    //Function that adds new washcard
-                    mainMenu();
-                case 3:
-                    outputText(Design.exitSystemMsg());
-                    break;
-                default:
-                    outputText(Design.defaultMenuMsg());
-                    secondMenu();
-                    break;
-            }
-        }
-        catch (InputMismatchException e) {
-            Design.newLine();
-            Design.inputMismatchExceptionMsg();
-            in.next();
-            Design.newLine();
-            secondMenu();
-        }
-        Design.newLine();
-    }
-    private static void secondMenuOptions() {
-        outputText(Design.headline());
-        outputText(Design.menuBars());
-        outputText("1. Use existing Wash Card by providing ID");
-        outputText("2. Buy a new Wash Card and print ID");
-        outputText("3. Exit program");
-        outputText(Design.menuBars());
-    }
+
     public static void mainMenu() {
-        mainMenuOptions();
+            try {
+                mainMenuOptions();
+                switch (UserInput.intIn.nextInt()) {
+                    case 1:
+                        CW.newLine();
+                        washMenu();
+                        break;
+                    case 2:
+                        CW.newLine();
+                        washCardMenu();
+                        break;
+                    case 3:
+                        CW.newLine();
+                        adminMenu();
+                        break;
+                    case 4:
+                        CW.newLine();
+                        CW.print(CW.exitSystemMsg());
+                        break;
+                    default:
+                        CW.newLine();
+                        CW.print(CW.defaultMenuMsg());
+                        mainMenu();
+                        break;
+                }
+            } catch (InputMismatchException e) {
+                CW.newLine();
+                CW.print(CW.inputMismatchExceptionMsg());
+                UserInput.intIn.next();
+                CW.newLine();
+                mainMenu();
+            }
+        CW.newLine();
+    }
+
+    private static void mainMenuOptions() {
+        CW.printMenu(
+                "Main menu",
+                "Wash your car",
+                "Manage WashCard",
+                "Admin Menu",
+                "Exit program"
+        );
+    }
+
+    public static void washCardMenu() {
+            try {
+                washCardMenuOptions();
+                switch (UserInput.intIn.nextInt()) {
+                    case 1:
+                        CW.newLine();
+                        WashCard.addWashCard();
+                        washCardMenu();
+                        break;
+                    case 2:
+                        CW.newLine();
+                        WashCard.getWashCardBalanceFromId();
+                        washCardMenu();
+                        break;
+                    case 3:
+                        CW.newLine();
+                        // function that recharges wash card with x amount
+                        washCardMenu();
+                        break;
+                    case 4:
+                        CW.newLine();
+                        CW.print(CW.exitToMainMenuMsg());
+                        userContinue = false;
+                        CW.newLine();
+                        mainMenu();
+                        break;
+                    default:
+                        CW.newLine();
+                        CW.print(CW.defaultMenuMsg());
+                        washCardMenu();
+                        break;
+                }
+            } catch (InputMismatchException e) {
+                CW.newLine();
+                CW.print(CW.inputMismatchExceptionMsg());
+                CW.newLine();
+                UserInput.intIn.next();
+            }
+    }
+
+    private static void washCardMenuOptions() {
+        CW.printMenu(
+                "Wash Card Menu",
+                "Buy a new WashCard and print ID",
+                "Check WashCard balance",
+                "Recharge Wash Card",
+                "Exit to main menu"
+        );
+    }
+
+    public static void washMenu() {
         try {
-            switch(in.nextInt()) {
+            washMenuOptions();
+            switch (UserInput.intIn.nextInt()) {
                 case 1:
-                    Design.newLine();
+                    CW.newLine();
+                    // function that does econ wash
+                    // prompts if user wants a receipt, if yes prints it out
                     washMenu();
                     break;
                 case 2:
-                    Design.newLine();
-                    washCardMenu();
+                    CW.newLine();
+                    // function that does stand. wash
+                    // prompts if user wants a receipt, if yes prints it out
+                    washMenu();
                     break;
                 case 3:
-                    Design.newLine();
-                    adminMenu();
-                    break;
+                    CW.newLine();
+                    // function that does delux wash
+                    // prompts if user wants a receipt, if yes prints it out
+                    washMenu();
                 case 4:
-                    outputText(Design.exitSystemMsg());
-                    break;
-                default:
-                    outputText(Design.defaultMenuMsg());
+                    CW.newLine();
+                    CW.print(CW.exitToMainMenuMsg());
+                    CW.newLine();
                     mainMenu();
                     break;
+                default:
+                    CW.newLine();
+                    CW.print(CW.defaultMenuMsg());
+                    washMenu();
+                    break;
             }
-        }
-        catch (InputMismatchException e) {
-            Design.newLine();
-            Design.inputMismatchExceptionMsg();
-            in.next();
-            Design.newLine();
-            mainMenu();
-        }
-        Design.newLine();
-    }
-    private static void mainMenuOptions() {
-        outputText(Design.headline());
-        outputText(Design.menuBars());
-        outputText("*****Main menu*****");
-        outputText("1. Select carwash");
-        outputText("2. Manage Wash Card");
-        outputText("3. Admin Menu");
-        outputText("4. Exit program");
-        outputText(Design.menuBars());
-        // Tester git gut
-    }
-    public static void washCardMenu() {
-        while (userContinue) {
-            washCardMenuOptions();
-            try {
-                switch(in.nextInt()) {
-                    case 1:
-                        Design.newLine();
-                        //function that checks wash card balance
-                        break;
-                    case 2:
-                        Design.newLine();
-                        //function that recharges wash card with x amount
-                        break;
-                    case 3:
-                        Design.newLine();
-                        outputText(Design.exitToMainMenuMsg());
-                        userContinue = false;
-                        Design.newLine();
-                        mainMenu();
-                        break;
-                    default:
-                        outputText(Design.defaultMenuMsg());
-                        washCardMenu();
-                        break;
-                }
-            }
-            catch (InputMismatchException e) {
-                Design.newLine();
-                Design.inputMismatchExceptionMsg();
-                Design.newLine();
-                in.next();
-            }
+        } catch (InputMismatchException e) {
+            CW.newLine();
+            CW.print(CW.inputMismatchExceptionMsg());
+            CW.newLine();
+            UserInput.intIn.next();
+            washMenu();
         }
     }
-    private static void washCardMenuOptions() {
-        outputText(Design.headline());
-        outputText(Design.menuBars());
-        outputText("*****Wash Card Menu*****");
-        outputText("1. Check Wash Card balance");
-        outputText("2. Recharge Wash Card");
-        outputText("3. Exit to main menu");
-        outputText(Design.menuBars());
-    }
-    public static void washMenu() {
-            washMenuOptions();
-            try {
-                switch(in.nextInt()) {
-                    case 1:
-                        Design.newLine();
-                        //function that does econ wash
-                        //prompts if user wants a receipt, if yes prints it out
-                        break;
-                    case 2:
-                        Design.newLine();
-                        //function that recharges wash card with x amount
-                        //prompts if user wants a receipt, if yes prints it out
-                        break;
-                    case 3:
-                        Design.newLine();
-                        //function that does delux wash
-                        //prompts if user wants a receipt, if yes prints it out
-                    case 4:
-                        Design.newLine();
-                        outputText(Design.exitToMainMenuMsg());
-                        Design.newLine();
-                        mainMenu();
-                        break;
-                    default:
-                        outputText(Design.defaultMenuMsg());
-                        washMenu();
-                        break;
-                }
-            }
-            catch (InputMismatchException e) {
-                Design.newLine();
-                Design.inputMismatchExceptionMsg();
-                Design.newLine();
-                in.next();
-                washMenu();
-        }
-    }
+
     private static void washMenuOptions() {
-        outputText(Design.headline());
-        outputText(Design.menuBars());
-        outputText("*****Wash Menu*****");
-        outputText("1. Economy wash");
-        outputText("2. Standard wash");
-        outputText("3. De-luxe wash");
-        outputText("4. Exit to main menu");
-        outputText(Design.menuBars());
+        CW.printMenu(
+            "Wash Menu",
+            "Economy Wash",
+            "Standard Wash",
+            "De Luxe Wash",
+            "Exit to main menu"
+        );
     }
+
     public static void adminMenu() {
-        while (userContinue) {
-            washCardMenuOptions();
             try {
-                switch(in.nextInt()) {
+                adminMenuOptions();
+                switch (UserInput.intIn.nextInt()) {
                     case 1:
-                        Design.newLine();
-                        //function that deletes wash card from system
+                        CW.newLine();
+                        WashCard.listAllWashCards();
+                        adminMenu();
                         break;
                     case 2:
-                        Design.newLine();
-                        //function that lists amount of econ washes bought + discount washes
+                        CW.newLine();
+                        WashCard.deleteWashCard();
+                        adminMenu();
                         break;
                     case 3:
-                        Design.newLine();
-                        //function that lists amount of standard washes bought + discount washes
+                        CW.newLine();
+                        // function that lists amount of econ washes bought + discount washes
+                        adminMenu();
                         break;
                     case 4:
-                        Design.newLine();
-                        //function that lists amount of delux washes bought
+                        CW.newLine();
+                        // function that lists amount of standard washes bought + discount washes
+                        adminMenu();
                         break;
                     case 5:
-                        Design.newLine();
-                        //function that lists bought washes by specific wash card
+                        CW.newLine();
+                        // function that lists amount of delux washes bought
+                        adminMenu();
                         break;
                     case 6:
-                        Design.newLine();
-                        outputText(Design.exitToMainMenuMsg());
+                        CW.newLine();
+                        // function that lists bought washes by specific wash card
+                        adminMenu();
+                        break;
+                    case 7:
+                        CW.newLine();
+                        CW.print(CW.exitToMainMenuMsg());
                         userContinue = false;
-                        Design.newLine();
+                        CW.newLine();
                         mainMenu();
                         break;
                     default:
-                        outputText(Design.defaultMenuMsg());
+                        CW.newLine();
+                        CW.print(CW.defaultMenuMsg());
                         washCardMenu();
                         break;
                 }
+            } catch (InputMismatchException e) {
+                CW.newLine();
+                CW.print(CW.inputMismatchExceptionMsg());
+                CW.newLine();
+                UserInput.intIn.next();
             }
-            catch (InputMismatchException e) {
-                Design.newLine();
-                Design.inputMismatchExceptionMsg();
-                Design.newLine();
-                in.next();
-            }
-        }
     }
+
     private static void adminMenuOptions() {
-        outputText(Design.headline());
-        outputText(Design.menuBars());
-        outputText("*****Admin Menu*****");
-        outputText("1. Delete existing Wash Card");
-        outputText("2. Show amount of bought Econ washes");
-        outputText("3. Show amount of bought Standard washes");
-        outputText("4. Show amount of bought De-Luxe washes");
-        outputText("5. List bought washes by specific Wash Card");
-        outputText("6. Exit to main menu");
-        outputText(Design.menuBars());
-    }
-    private static void outputText(String text) {
-        System.out.println(text);
+        CW.printMenu(
+                "Admin Menu",
+                "List all added WashCards",
+                "Delete existing Wash Card",
+                "Show amount of bought Econ washes",
+                "Show amount of bought Standard washes",
+                "Show amount of bought De-Luxe washes",
+                "List bought washes by specific WashCard",
+                "Exit to main menu"
+        );
     }
 }
