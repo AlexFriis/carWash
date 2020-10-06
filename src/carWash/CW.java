@@ -50,6 +50,7 @@ public class CW {
         return ("Input format is not valid!");
     }
     public static String noWashCardsRegisteredMsg() { return "System has no WashCards registered! Returning to menu"; }
+    public static String noWashCardsEqualToInputMsg(int id) { return "No WashCard registered to " + id; }
     public static String exitToMainMenuMsg() {
         return ("Exiting to main menu!");
     }
