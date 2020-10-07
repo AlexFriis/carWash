@@ -133,6 +133,7 @@ public class Menu {
                     CW.newLine();
                     Checkout.printEconomy();
                     CW.newLine();
+                    Checkout.doCheckout(1);
                     // function that does econ wash
                     // prompts if user wants a receipt, if yes prints it out
                     washMenu();
@@ -144,6 +145,7 @@ public class Menu {
                     CW.newLine();
                     Checkout.printStandard();
                     CW.newLine();
+                    Checkout.doCheckout(2);
                     // function that does stand. wash
                     // prompts if user wants a receipt, if yes prints it out
                     washMenu();
@@ -155,6 +157,7 @@ public class Menu {
                     CW.newLine();
                     Checkout.printDeluxe();
                     CW.newLine();
+                    Checkout.doCheckout(3);
                     // function that does delux wash
                     // prompts if user wants a receipt, if yes prints it out
                     washMenu();
@@ -309,5 +312,6 @@ public class Menu {
                 "No",
                 "Exit program"
         );
+
 }
 }

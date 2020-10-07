@@ -153,6 +153,14 @@ public class WashCard {
             CW.print(CW.noWashCardsRegisteredMsg());
         }
     }
+    public static WashCard getWashCardById(int washCardId) {
+        var WSC = WashCard.washCardArrList.stream().filter(washCard -> washCardId == washCard.getId()).findFirst().get();
+        if (WSC == null) {
+            CW.print("That Wash card ID does not exist.");
+            return null;
+        }
+        return WSC;
+    }
 
     private static boolean washCardArrListSizeNotZero() {
         return (washCardArrList.size() != 0);

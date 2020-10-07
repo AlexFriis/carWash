@@ -9,12 +9,12 @@ public class CW {
 
     /**
      * Prints a menu with any amount of menu options.
-     * @param menuNameString name of the menu as *****Menu name*****.
+     * @param menuNameString name of the menu as *Menu name*.
      * @param menuOptions Variable length argument for options, self-numbered.
      * <p>
      * Example:
      * <p>
-     * {@code Design.printMenu("Wash Menu", "Economy Wash", "Standard Wash", "De Luxe Wash", "Exit to main menu");}
+     * {@code CW.printMenu("Wash Menu", "Economy Wash", "Standard Wash", "De Luxe Wash", "Exit to main menu");}
      */
     public static void printMenu(String menuNameString, String ... menuOptions){
         System.out.println(headline());
