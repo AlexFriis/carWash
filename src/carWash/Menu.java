@@ -222,6 +222,12 @@ public class Menu {
                         break;
                     case 7:
                         CW.newLine();
+                        //Insert function - Search specific Washcard
+                        CW.print("Nothing here yet boso");
+                        CW.newLine();
+                        adminMenu();
+                    case 8:
+                        CW.newLine();
                         CW.print(CW.exitToMainMenuMsg());
                         CW.newLine();
                         mainMenu();
@@ -248,6 +254,7 @@ public class Menu {
                 "Show amount of bought Econ washes",
                 "Show amount of bought Standard washes",
                 "Show amount of bought De-Luxe washes",
+                "Show amount of total bought washes",
                 "List bought washes by specific WashCard",
                 "Exit to main menu"
         );
