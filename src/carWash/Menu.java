@@ -1,7 +1,15 @@
 package src.carWash;
 
 //haderfc
+/*TODO:
+- Checkout - Checkfunds
+- Checkout - PrintReceipt
 
+- SIDSTE UML DIMSDIMSDIMS?!?!?!
+
+- Clean up code
+- Deliver
+ */
 import java.util.InputMismatchException;
 
 

@@ -36,7 +36,22 @@ public class Checkout {
             return "Insufficient funds";
         }
         */
+/*
+    public void printReceipt(String Receipt,
+                                   int washCard,
+                                   int oldBalance,
+                                   int price,
+                                   int newBalance,
+                                   String receiptMsg) {
+        WashCard w = new WashCard();
 
+        this.washCard = washCard;
+        this.oldBalance = oldBalance;
+        this.price = price;
+        this.newBalance = newBalance;
+
+
+    } */
     //*Receipt*
     //*WashCard ID*
     //*Old Balance ID*

@@ -6,7 +6,6 @@ public class Price {
     private final int economy;
     private final int standard;
     private final int deluxe;
-    private int discountPercentage;
 
     private static LocalDateTime timestamp() {
         return LocalDateTime.now().withNano(0);
