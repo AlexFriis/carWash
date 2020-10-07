@@ -6,68 +6,10 @@ package src.carWash;
 import java.util.InputMismatchException;
 
 public class Menu {
-    private static boolean userContinue = true;
-
-     /*
-    public static void firstMenu() {
-      try {
-            firstMenuOptions();
-            switch (UserInput.intIn.nextInt()) {
-                case 1:
-                    CW.newLine();
-                    Price.printTimeAndDate();
-                    CW.newLine();
-                    // Time and date function
-                    // print current time and date
-                    mainMenu();
-                    break;
-                case 2:
-                   /* CW.newLine();
-                    Checkout c = new Checkout();
-                    c.printPrice(); */
-                    //Remove cause useless?? - Ain't written in assignment.
-                    // User Specified time and date function
-                    // specify time
-                   /* mainMenu();
-                    break;
-                case 3:
-                    CW.newLine();
-                    CW.print(CW.exitSystemMsg());
-                    System.exit(0);
-                    break;
-                default:
-                    CW.newLine();
-                    CW.print(CW.defaultMenuMsg());
-                    firstMenu();
-                    break;
-            }
-        } catch (InputMismatchException e) {
-            CW.newLine();
-            CW.print(CW.inputMismatchExceptionMsg());
-            UserInput.intIn.next();
-            CW.newLine();
-            firstMenu();
-        }
-        CW.newLine();
-    }
-
-
-    private static void firstMenuOptions() {
-        CW.printMenu(
-                "First menu",
-                "Import time & date from computer",
-                "Specify time & date",
-                "Exit program"
-        );
-    }
-
- */
-
     public static void firstMenu() {
         CW.newLine();
+        CW.print("Welcome to Super-Shine!");
         CW.newLine();
-        CW.newLine();
-
         Price.printTimeAndDate();
         mainMenu();
     }
@@ -141,7 +83,6 @@ public class Menu {
                     case 4:
                         CW.newLine();
                         CW.print(CW.exitToMainMenuMsg());
-                        userContinue = false;
                         CW.newLine();
                         mainMenu();
                         break;
@@ -264,7 +205,6 @@ public class Menu {
                     case 7:
                         CW.newLine();
                         CW.print(CW.exitToMainMenuMsg());
-                        userContinue = false;
                         CW.newLine();
                         mainMenu();
                         break;
