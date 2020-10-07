@@ -40,3 +40,21 @@ Design.printMenu(
             "Standard Wash",
             "De Luxe Wash",
             "Exit to main menu"
+
+
+
+
+    public int getEconomy(int discountPercentage) {
+        if (this.isDiscountAvailable(timestamp())) {
+            return (int) (this.economy * (100 - discountPercentage / 100));
+        }
+        return this.economy;
+    }
+
+        public int getStandard(int discountPercentage) {
+            this.discountPercentage = discountPercentage;
+            if (this.isDiscountAvailable(timestamp())) {
+                return (int) (this.standard * (100 - discountPercentage / 100));
+            }
+            return this.standard;
+        }

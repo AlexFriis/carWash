@@ -1,19 +1,23 @@
 package src.carWash;
 
-import java.time.DayOfWeek;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
+import java.time.*;
 
 public class Price {
     private final int economy;
     private final int standard;
     private final int deluxe;
-    private static LocalDateTime timestamp(){
-        return LocalDateTime.now(ZoneId.systemDefault());
+    private int discountPercentage;
+
+    private static LocalDateTime timestamp() {
+        return LocalDateTime.now().withNano(0);
     }
-    
-    public void printTimeAndDate() {
-        System.out.println(timestamp());
+
+    public static void printTimeAndDate() {
+        System.out.println("Current date & time is: "
+                + "\n"
+                + "Format yyyy-mm-dd H-m-s"
+                + "\n"
+                + timestamp());
     }
 
     // Implicit constructor
@@ -29,18 +33,11 @@ public class Price {
         this.standard = standard;
         this.deluxe = deluxe;
     }
-    
+
     public int getEconomy() {
 
         if (this.isDiscountAvailable(timestamp())) {
             return (int) (this.economy * 0.8);
-        }
-        return this.economy;
-    }
-
-    public int getEconomy(int discountPercentage){
-        if (this.isDiscountAvailable(timestamp())) {
-            return (int) (this.economy * (100-discountPercentage/100));
         }
         return this.economy;
     }
@@ -52,15 +49,7 @@ public class Price {
         return this.standard;
     }
 
-    public int getStandard(int discountPercentage) {
-        if (this.isDiscountAvailable(timestamp())) {
-            return (int) (this.standard * (100-discountPercentage/100));
-        }
-        return this.standard;
-    }
-    
-    
-    public int getDeluxe(){
+    public int getDeluxe() {
         return this.deluxe;
     }
 
@@ -71,18 +60,16 @@ public class Price {
             case WEDNESDAY:
             case THURSDAY:
             case FRIDAY:
-            if (timestamp.getHour() < 14) {
-                return true;
-            }
-        
+                if (timestamp.getHour() < 14) {
+                    return true;
+                }
+
             case SATURDAY:
             case SUNDAY:
             default:
                 return false;
         }
     }
-
-
 
     public int getEconomy(DayOfWeek dayOfWeek, int timeOfDay) {
 
@@ -91,6 +78,7 @@ public class Price {
         }
         return this.economy;
     }
+
     public int getStandard(DayOfWeek dayOfWeek, int timeOfDay) {
 
         if (this.isDiscountAvailable(dayOfWeek, timeOfDay)) {
@@ -99,18 +87,17 @@ public class Price {
         return this.standard;
     }
 
-
-    private boolean isDiscountAvailable(DayOfWeek dayOfWeek, int timeOfDay){
+    private boolean isDiscountAvailable(DayOfWeek dayOfWeek, int timeOfDay) {
         switch (dayOfWeek) {
             case MONDAY:
             case TUESDAY:
             case WEDNESDAY:
             case THURSDAY:
             case FRIDAY:
-            if (timeOfDay < 14) {
-                return true;
-            }
-        
+                if (timeOfDay < 14) {
+                    return true;
+                }
+
             case SATURDAY:
             case SUNDAY:
             default:

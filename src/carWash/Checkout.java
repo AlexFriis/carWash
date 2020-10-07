@@ -9,25 +9,39 @@ public class Checkout {
     public Checkout(){
         price = new Price();
     }    
-
+    //Might remove.
     public void printPrice() {
         var scanner = new Scanner(System.in);
         int timeOfDay;
         int dayOfWeek;
-        CW.printMenu("Weekdays", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday");
+        CW.printMenu("Weekdays",
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+                "Sunday"
+        );
         do {
             CW.print("Please enter right input.");
-            dayOfWeek = scanner.nextInt(); 
+            dayOfWeek = scanner.nextInt();
         } while (dayOfWeek < 1 || dayOfWeek > 7);
         do {
             CW.print("Please enter right input.");
-            timeOfDay = scanner.nextInt(); 
+            timeOfDay = scanner.nextInt();
         } while (timeOfDay < 0 || timeOfDay > 23);
-        
-    
+
+
         this.price.getEconomy(DayOfWeek.of(dayOfWeek), timeOfDay);
+
         scanner.close();
     }
-    
+    public void usrInputDate() {
+        printPrice();
+    }
     //handles receipts + calc of price deductions
 }
+
+//Balance - wash
+// Print receipt

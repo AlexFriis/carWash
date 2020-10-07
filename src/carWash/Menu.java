@@ -14,16 +14,17 @@ public class Menu {
             switch (UserInput.intIn.nextInt()) {
                 case 1:
                     CW.newLine();
-                    Price p;
-                    p = new Price();
-                    p.printTimeAndDate();
+                    Price.printTimeAndDate();
                     CW.newLine();
                     // Time and date function
                     // print current time and date
                     mainMenu();
                     break;
                 case 2:
-                    CW.newLine();
+                   /* CW.newLine();
+                    Checkout c = new Checkout();
+                    c.printPrice(); */
+                    //Remove cause useless?? - Ain't written in assignment.
                     // User Specified time and date function
                     // specify time
                     mainMenu();
@@ -159,17 +160,23 @@ public class Menu {
             switch (UserInput.intIn.nextInt()) {
                 case 1:
                     CW.newLine();
+                    WashFunctions.printEconomy();
+                    CW.newLine();
                     // function that does econ wash
                     // prompts if user wants a receipt, if yes prints it out
                     washMenu();
                     break;
                 case 2:
                     CW.newLine();
+                    WashFunctions.printStandard();
+                    CW.newLine();
                     // function that does stand. wash
                     // prompts if user wants a receipt, if yes prints it out
                     washMenu();
                     break;
                 case 3:
+                    CW.newLine();
+                    WashFunctions.printDeluxe();
                     CW.newLine();
                     // function that does delux wash
                     // prompts if user wants a receipt, if yes prints it out
