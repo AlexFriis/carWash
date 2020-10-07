@@ -58,3 +58,48 @@ Design.printMenu(
             }
             return this.standard;
         }
+
+
+
+        ///////////////////
+       public static void firstMenu() {
+            try {
+                firstMenuOptions();
+                switch (UserInput.intIn.nextInt()) {
+                    case 1:
+                        CW.newLine();
+                        Price.printTimeAndDate();
+                        CW.newLine();
+                        // Time and date function
+                        // print current time and date
+                        mainMenu();
+                        break;
+                    case 2:
+                       /* CW.newLine();
+                        Checkout c = new Checkout();
+                        c.printPrice(); */
+                        //Remove cause useless?? - Ain't written in assignment.
+                        // User Specified time and date function
+                        // specify time
+                        mainMenu();
+                        break;
+                    case 3:
+                        CW.newLine();
+                        CW.print(CW.exitSystemMsg());
+                        System.exit(0);
+                        break;
+                    default:
+                        CW.newLine();
+                        CW.print(CW.defaultMenuMsg());
+                        firstMenu();
+                        break;
+                }
+            } catch (InputMismatchException e) {
+                CW.newLine();
+                CW.print(CW.inputMismatchExceptionMsg());
+                UserInput.intIn.next();
+                CW.newLine();
+                firstMenu();
+            }
+            CW.newLine();
+        }

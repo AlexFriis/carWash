@@ -8,8 +8,9 @@ import java.util.InputMismatchException;
 public class Menu {
     private static boolean userContinue = true;
 
+     /*
     public static void firstMenu() {
-        try {
+      try {
             firstMenuOptions();
             switch (UserInput.intIn.nextInt()) {
                 case 1:
@@ -27,11 +28,12 @@ public class Menu {
                     //Remove cause useless?? - Ain't written in assignment.
                     // User Specified time and date function
                     // specify time
-                    mainMenu();
+                   /* mainMenu();
                     break;
                 case 3:
                     CW.newLine();
                     CW.print(CW.exitSystemMsg());
+                    System.exit(0);
                     break;
                 default:
                     CW.newLine();
@@ -49,6 +51,7 @@ public class Menu {
         CW.newLine();
     }
 
+
     private static void firstMenuOptions() {
         CW.printMenu(
                 "First menu",
@@ -56,6 +59,17 @@ public class Menu {
                 "Specify time & date",
                 "Exit program"
         );
+    }
+
+ */
+
+    public static void firstMenu() {
+        CW.newLine();
+        CW.newLine();
+        CW.newLine();
+
+        Price.printTimeAndDate();
+        mainMenu();
     }
 
     public static void mainMenu() {
@@ -77,6 +91,7 @@ public class Menu {
                     case 4:
                         CW.newLine();
                         CW.print(CW.exitSystemMsg());
+                        System.exit(0);
                         break;
                     default:
                         CW.newLine();

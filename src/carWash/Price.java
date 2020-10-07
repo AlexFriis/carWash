@@ -71,37 +71,4 @@ public class Price {
         }
     }
 
-    public int getEconomy(DayOfWeek dayOfWeek, int timeOfDay) {
-
-        if (this.isDiscountAvailable(dayOfWeek, timeOfDay)) {
-            return (int) (this.economy * 0.8);
-        }
-        return this.economy;
-    }
-
-    public int getStandard(DayOfWeek dayOfWeek, int timeOfDay) {
-
-        if (this.isDiscountAvailable(dayOfWeek, timeOfDay)) {
-            return (int) (this.standard * 0.8);
-        }
-        return this.standard;
-    }
-
-    private boolean isDiscountAvailable(DayOfWeek dayOfWeek, int timeOfDay) {
-        switch (dayOfWeek) {
-            case MONDAY:
-            case TUESDAY:
-            case WEDNESDAY:
-            case THURSDAY:
-            case FRIDAY:
-                if (timeOfDay < 14) {
-                    return true;
-                }
-
-            case SATURDAY:
-            case SUNDAY:
-            default:
-                return false;
-        }
-    }
 }

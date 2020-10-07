@@ -4,42 +4,7 @@ import java.time.DayOfWeek;
 import java.util.Scanner;
 
 public class Checkout {
-    private Price price;
-    
-    public Checkout(){
-        price = new Price();
-    }    
-    //Might remove.
-    public void printPrice() {
-        var scanner = new Scanner(System.in);
-        int timeOfDay;
-        int dayOfWeek;
-        CW.printMenu("Weekdays",
-                "Monday",
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday",
-                "Saturday",
-                "Sunday"
-        );
-        do {
-            CW.print("Please enter right input.");
-            dayOfWeek = scanner.nextInt();
-        } while (dayOfWeek < 1 || dayOfWeek > 7);
-        do {
-            CW.print("Please enter right input.");
-            timeOfDay = scanner.nextInt();
-        } while (timeOfDay < 0 || timeOfDay > 23);
 
-
-        this.price.getEconomy(DayOfWeek.of(dayOfWeek), timeOfDay);
-
-        scanner.close();
-    }
-    public void usrInputDate() {
-        printPrice();
-    }
     //handles receipts + calc of price deductions
 }
 
