@@ -90,7 +90,7 @@ public class Menu {
                         break;
                     case 3:
                         CW.newLine();
-                        // function that recharges wash card with x amount
+                        WashCard.rechargeBalance();
                         washCardMenu();
                         break;
                     case 4:
