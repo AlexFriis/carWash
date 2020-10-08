@@ -153,6 +153,7 @@ public class WashCard {
             CW.print(CW.noWashCardsRegisteredMsg());
         }
     }
+
     public static WashCard getWashCardById(int washCardId) {
         var WSC = WashCard.washCardArrList.stream().filter(washCard -> washCardId == washCard.getId()).findFirst().get();
         if (WSC == null) {
@@ -162,8 +163,45 @@ public class WashCard {
         return WSC;
     }
 
+    private static void checkArrListForMatchingId(int oldId) {
+        for (i = 0; i < washCardArrList.size(); i++) {
+            if (washCardArrListIdEqualsIdIn(i, oldId)) {
+                Menu.washCardMenu();
+                break;
+            }
+            else if (washCardArrListIndexNotVariableIn()) {
+                CW.newLine();
+                CW.print(CW.noWashCardsRegisteredMsg());
+                CW.newLine();
+                Menu.mainMenu();
+            }
+        }
+    }
+    public static void changeInfo () {
+        if (washCardArrListSizeNotZero()) {
+            try {
+                CW.print("Please specify Wash Card ID.");
+                int oldId = UserInput.intIn();
+                CW.newLine();
+                checkArrListForMatchingId(oldId);
+            } catch (InputMismatchException e) {
+                CW.newLine();
+                CW.print(CW.inputMismatchExceptionMsg());
+                UserInput.intIn.next();
+                CW.newLine();
+                Menu.mainMenu();
+            }
+        }
+        else {
+            CW.print(CW.noWashCardsRegisteredMsg());
+            CW.newLine();
+            Menu.mainMenu();
+        }
+        CW.newLine();
+    }
+
     private static boolean washCardArrListSizeNotZero() {
-        return (washCardArrList.size() != 0);
+        return (!washCardArrList.isEmpty());
     }
     private static boolean washCardArrListIndexNotVariableIn() {
         return i == washCardArrList.size() - 1;

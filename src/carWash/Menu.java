@@ -33,17 +33,22 @@ public class Menu {
                 switch (UserInput.intIn.nextInt()) {
                     case 1:
                         CW.newLine();
-                        washMenu();
+                        WashCard.addWashCard();
+                        mainMenu();
                         break;
                     case 2:
                         CW.newLine();
-                        washCardMenu();
+                        WashCard.changeInfo();
                         break;
                     case 3:
                         CW.newLine();
-                        adminPasswordSubmenu();
+                        washCardMenu();
                         break;
                     case 4:
+                        CW.newLine();
+                        adminPasswordSubmenu();
+                        break;
+                    case 5:
                         CW.newLine();
                         CW.print(CW.exitSystemMsg());
                         System.exit(0);
@@ -67,6 +72,7 @@ public class Menu {
     private static void mainMenuOptions() {
         CW.printMenu(
                 "Main menu",
+                "Buy a new WashCard",
                 "Wash your car",
                 "Manage WashCard",
                 "Admin Menu",
@@ -77,23 +83,18 @@ public class Menu {
     public static void washCardMenu() {
             try {
                 washCardMenuOptions();
-                switch (UserInput.intIn.nextInt()) {
+                switch (UserInput.intIn.nextInt()) {    
                     case 1:
-                        CW.newLine();
-                        WashCard.addWashCard();
-                        washCardMenu();
-                        break;
-                    case 2:
                         CW.newLine();
                         WashCard.getWashCardBalanceFromId();
                         washCardMenu();
                         break;
-                    case 3:
+                    case 2:
                         CW.newLine();
                         WashCard.rechargeBalance();
                         washCardMenu();
                         break;
-                    case 4:
+                    case 3:
                         CW.newLine();
                         CW.print(CW.exitToMainMenuMsg());
                         CW.newLine();
@@ -116,14 +117,15 @@ public class Menu {
     private static void washCardMenuOptions() {
         CW.printMenu(
                 "Wash Card Menu",
-                "Buy a new WashCard and print ID",
                 "Check WashCard balance",
                 "Recharge Wash Card",
                 "Exit to main menu"
         );
     }
 
-    public static void washMenu() {
+    public static void washMenu(int i) {
+        WashCard.changeInfo();
+
         try {
             washMenuOptions();
             switch (UserInput.intIn.nextInt()) {
@@ -136,7 +138,7 @@ public class Menu {
                     Checkout.doCheckout(1);
                     // function that does econ wash
                     // prompts if user wants a receipt, if yes prints it out
-                    washMenu();
+                    washMenu(i);
 
                     break;
                 case 2:
@@ -148,7 +150,7 @@ public class Menu {
                     Checkout.doCheckout(2);
                     // function that does stand. wash
                     // prompts if user wants a receipt, if yes prints it out
-                    washMenu();
+                    washMenu(i);
 
                     break;
                 case 3:
@@ -160,7 +162,7 @@ public class Menu {
                     Checkout.doCheckout(3);
                     // function that does delux wash
                     // prompts if user wants a receipt, if yes prints it out
-                    washMenu();
+                    washMenu(i);
 
                 case 4:
                     CW.newLine();
@@ -171,7 +173,7 @@ public class Menu {
                 default:
                     CW.newLine();
                     CW.print(CW.defaultMenuMsg());
-                    washMenu();
+                    washMenu(i);
                     break;
             }
         } catch (InputMismatchException e) {
@@ -179,7 +181,7 @@ public class Menu {
             CW.print(CW.inputMismatchExceptionMsg());
             CW.newLine();
             UserInput.intIn.next();
-            washMenu();
+            washMenu(i);
         }
     }
 
@@ -270,22 +272,17 @@ public class Menu {
                 "Exit to main menu"
         );
     }
-    public static void receiptMenu() {
+    public static void receiptMenu(int i) {
         try {
             receiptMenuOptions();
             switch (UserInput.intIn.nextInt()) {
                 case 1:
                     CW.newLine();
-                 
+                receiptPrinter(i);
+                CW.print("Thank you for your purchase, have a shine-tastic day!");
                     CW.newLine();
-                    
                     break;
                 case 2:
-                    CW.newLine();
-
-                    CW.newLine();
-                    break;
-                case 3:
                     CW.newLine();
                     CW.print(CW.exitToMainMenuMsg());
                     CW.newLine();
@@ -294,7 +291,7 @@ public class Menu {
                 default:
                     CW.newLine();
                     CW.print(CW.defaultMenuMsg());
-                    receiptMenu();
+                    receiptMenu(i);
                     break;
             }
         } catch (InputMismatchException e) {
@@ -302,15 +299,14 @@ public class Menu {
             CW.print(CW.inputMismatchExceptionMsg());
             CW.newLine();
             UserInput.intIn.next();
-            washMenu();
+            //washMenu(i);
         }
     }
     private static void receiptMenuOptions() {
         CW.printMenu(
                 "Would you like a receipt?",
                 "Yes",
-                "No",
-                "Exit program"
+                "No"
         );
 
     }
@@ -324,5 +320,17 @@ public class Menu {
         CW.print("Password: \"" + pass + "\" is incorrect. Returning to main menu!");
         CW.newLine();
         mainMenu();
+    }
+    public static void receiptPrinter(int i) {
+        int oldBalance = WashCard.washCardArrList.get(i).getBalance();
+        int newBalance;
+        newBalance = (oldBalance - Checkout.doCheckout(i));
+        CW.print("ID: " + WashCard.washCardArrList.get(i).getId());
+        CW.print("Previous Balance: " + WashCard.washCardArrList.get(i).getBalance());
+        CW.print("Price of selected wash: " + Checkout.doCheckout(i) + ".");
+        CW.print("New balance: " + newBalance);
+        
+        
+        
     }
 }

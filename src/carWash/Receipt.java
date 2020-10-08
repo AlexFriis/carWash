@@ -16,17 +16,6 @@ public class Receipt {
     }
 
 
-    public void printReceipt() {
-    CW.print(
-            "Wash card ID: " + this.washCardId + ".\n"
-            + "Old balance: " + this.oldBalance + ".\n"
-            + "Price of selected wash: " + this.price + ".\n"
-            + "New balance: " + this.newBalance + "."
-    );
-
-    }
-
-
 }
 //*Receipt*
 //*WashCard ID*
