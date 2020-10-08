@@ -123,10 +123,10 @@ public class Menu {
     }
     public static void washMenu(int i) {
         try {
-            UserInput.intIn.nextInt();
             washMenuOptions();
             switch (UserInput.intIn.nextInt()) {
                 case 1:
+                    int j = Checkout.getPriceEcon();
                     Menu.economyWashCounter++;
                     Menu.totalWashCounter++;
                     CW.newLine();
@@ -134,8 +134,8 @@ public class Menu {
                     CW.print("Do you want a receipt?");
                     String answer = UserInput.in.nextLine();
                     CW.newLine();
-                    if (Checkout.userWantsReceipt()) {
-                        receiptPrinter(i);
+                    if (Checkout.userWantsReceipt(answer)) {
+                        receiptPrinter(i, j);
                     }
                     else {
                         washMenu(i);
@@ -149,7 +149,7 @@ public class Menu {
                     CW.newLine();
                     Checkout.printStandard();
                     CW.newLine();
-                    Checkout.doCheckout(i);
+                    //Checkout.doCheckout(i);
                     // function that does stand. wash
                     // prompts if user wants a receipt, if yes prints it out
                     washMenu(i);
@@ -160,7 +160,7 @@ public class Menu {
                     CW.newLine();
                     Checkout.printDeluxe();
                     CW.newLine();
-                    Checkout.doCheckout(i);
+                    //Checkout.doCheckout(i);
                     // function that does delux wash
                     // prompts if user wants a receipt, if yes prints it out
                     washMenu(i);
@@ -285,18 +285,18 @@ public class Menu {
         mainMenu();
     }
 
-    public static void receiptPrinter(int i) {
+    public static void receiptPrinter(int i, int j) {
         int oldBalance = WashCard.washCardArrList.get(i).getBalance();
         int newBalance;
-        newBalance = (oldBalance - Checkout.doCheckout(i));
+        newBalance = (oldBalance - j);
         CW.print("ID: " + WashCard.washCardArrList.get(i).getId());
         CW.print("Previous Balance: " + WashCard.washCardArrList.get(i).getBalance());
-        CW.print("Price of selected wash: " + Checkout.doCheckout(i) + ".");
+        CW.print("Price of selected wash: " + j + ".");
         CW.print("New balance: " + newBalance + ".");
 
 
     }
-    public static void receiptMenu(int i) {
+    /* public static void receiptMenu(int i) {
         try {
             receiptMenuOptions();
             switch (UserInput.intIn.nextInt()) {
@@ -333,4 +333,6 @@ public class Menu {
         );
 
     }
+
+     */
 }

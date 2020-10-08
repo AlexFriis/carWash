@@ -37,7 +37,7 @@ public class Checkout {
     }
 
 
-    public static int doCheckout(int i) {
+    /* public static int doCheckout(int i) {
         int price;
 
         switch (i) {
@@ -62,6 +62,8 @@ public class Checkout {
     public static void doNewCheckout(int i) {
 
     }
+
+     */
 
 
     public static void washCheckoutOptions() {
