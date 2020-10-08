@@ -116,6 +116,9 @@ public class Checkout {
                 "No");
 
     }
+    public static void getWashCard() {
+
+    }
 
 }
     /*

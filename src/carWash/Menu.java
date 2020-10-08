@@ -41,7 +41,7 @@ public class Menu {
                         break;
                     case 3:
                         CW.newLine();
-                        adminMenu();
+                        adminPasswordSubmenu();
                         break;
                     case 4:
                         CW.newLine();
@@ -282,7 +282,7 @@ public class Menu {
                     break;
                 case 2:
                     CW.newLine();
-                
+
                     CW.newLine();
                     break;
                 case 3:
@@ -313,5 +313,16 @@ public class Menu {
                 "Exit program"
         );
 
-}
+    }
+    public static void adminPasswordSubmenu() {
+        CW.print("Please input password");
+        String pass = UserInput.in.nextLine();
+        if (pass.equals("1234")) {
+            adminMenu();
+        }
+        CW.newLine();
+        CW.print("Password: \"" + pass + "\" is incorrect. Returning to main menu!");
+        CW.newLine();
+        mainMenu();
+    }
 }
