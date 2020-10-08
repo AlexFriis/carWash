@@ -16,6 +16,7 @@ public class Menu {
         Price.printTimeAndDate();
         mainMenu();
     }
+
     public static void mainMenu() {
         try {
             mainMenuOptions();
@@ -57,6 +58,7 @@ public class Menu {
         }
         CW.newLine();
     }
+
     private static void mainMenuOptions() {
         CW.printMenu(
                 "Main menu",
@@ -67,6 +69,7 @@ public class Menu {
                 "Exit program"
         );
     }
+
     public static void washCardMenu() {
         try {
             washCardMenuOptions();
@@ -100,6 +103,7 @@ public class Menu {
             UserInput.intIn.next();
         }
     }
+
     private static void washCardMenuOptions() {
         CW.printMenu(
                 "Wash Card Menu",
@@ -108,6 +112,7 @@ public class Menu {
                 "Exit to main menu"
         );
     }
+
     public static void washMenu(int i) {
         String answer;
         try {
@@ -126,8 +131,7 @@ public class Menu {
                         Checkout.receiptPrinterEcon(i);
                         CW.newLine();
                         washMenu(i);
-                    }
-                    else {
+                    } else {
                         washMenu(i);
                     }
                     break;
@@ -144,8 +148,7 @@ public class Menu {
                         Checkout.receiptPrinterStand(i);
                         CW.newLine();
                         washMenu(i);
-                    }
-                    else {
+                    } else {
                         CW.newLine();
                         washMenu(i);
                     }
@@ -163,8 +166,7 @@ public class Menu {
                         Checkout.receiptPrinterDelux(i);
                         CW.newLine();
                         washMenu(i);
-                    }
-                    else {
+                    } else {
                         CW.newLine();
                         washMenu(i);
                     }
@@ -189,6 +191,7 @@ public class Menu {
             washMenu(i);
         }
     }
+
     public static void washMenuOptions() {
         CW.printMenu(
                 "Wash Menu",
@@ -198,6 +201,7 @@ public class Menu {
                 "Exit to main menu"
         );
     }
+
     public static void adminMenu() {
         try {
             adminMenuOptions();
@@ -261,6 +265,7 @@ public class Menu {
             UserInput.intIn.next();
         }
     }
+
     private static void adminMenuOptions() {
         CW.printMenu(
                 "Admin Menu",
@@ -274,6 +279,7 @@ public class Menu {
                 "Exit to main menu"
         );
     }
+
     public static void adminPasswordSubmenu() {
         CW.print("Please input password");
         String pass = UserInput.in.nextLine();

@@ -17,6 +17,7 @@ public class Price {
                 + "\n"
                 + timestamp());
     }
+
     // Implicit constructor
     public Price() {
         this.economy = 50;
