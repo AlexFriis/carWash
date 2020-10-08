@@ -1,16 +1,5 @@
 package src.carWash;
 
-//haderfc
-/*TODO:
-- Checkout - Checkfunds
-- Checkout - PrintReceipt
-
-- SIDSTE UML DIMSDIMSDIMS?!?!?!
-
-- Clean up code
-- Deliver
- */
-
 import java.util.InputMismatchException;
 
 
@@ -27,7 +16,6 @@ public class Menu {
         Price.printTimeAndDate();
         mainMenu();
     }
-
     public static void mainMenu() {
         try {
             mainMenuOptions();
@@ -39,7 +27,7 @@ public class Menu {
                     break;
                 case 2:
                     CW.newLine();
-                    WashCard.changeInfo();
+                    WashCard.checkID();
                     break;
                 case 3:
                     CW.newLine();
@@ -69,7 +57,6 @@ public class Menu {
         }
         CW.newLine();
     }
-
     private static void mainMenuOptions() {
         CW.printMenu(
                 "Main menu",
@@ -122,48 +109,66 @@ public class Menu {
         );
     }
     public static void washMenu(int i) {
+        String answer;
         try {
             washMenuOptions();
             switch (UserInput.intIn.nextInt()) {
                 case 1:
-                    int j = Checkout.getPriceEcon();
                     Menu.economyWashCounter++;
                     Menu.totalWashCounter++;
                     CW.newLine();
-                    Checkout.printEconomy();
+                    Checkout.printEconomy(i);
+                    CW.newLine();
                     CW.print("Do you want a receipt?");
-                    String answer = UserInput.in.nextLine();
+                    answer = UserInput.in.nextLine();
                     CW.newLine();
                     if (Checkout.userWantsReceipt(answer)) {
-                        receiptPrinter(i, j);
+                        Checkout.receiptPrinterEcon(i);
+                        CW.newLine();
+                        washMenu(i);
                     }
                     else {
                         washMenu(i);
                     }
-                    // function that does econ wash
-                    // prompts if user wants a receipt, if yes prints it out
                     break;
                 case 2:
                     Menu.standardWashCounter++;
                     Menu.totalWashCounter++;
                     CW.newLine();
-                    Checkout.printStandard();
+                    Checkout.printStandard(i);
                     CW.newLine();
-                    //Checkout.doCheckout(i);
-                    // function that does stand. wash
-                    // prompts if user wants a receipt, if yes prints it out
-                    washMenu(i);
+                    CW.print("Do you want a receipt?");
+                    answer = UserInput.in.nextLine();
+                    CW.newLine();
+                    if (Checkout.userWantsReceipt(answer)) {
+                        Checkout.receiptPrinterStand(i);
+                        CW.newLine();
+                        washMenu(i);
+                    }
+                    else {
+                        CW.newLine();
+                        washMenu(i);
+                    }
                     break;
                 case 3:
                     Menu.deluxeWashCounter++;
                     Menu.totalWashCounter++;
                     CW.newLine();
-                    Checkout.printDeluxe();
+                    Checkout.printDeluxe(i);
                     CW.newLine();
-                    //Checkout.doCheckout(i);
-                    // function that does delux wash
-                    // prompts if user wants a receipt, if yes prints it out
-                    washMenu(i);
+                    CW.print("Do you want a receipt?");
+                    answer = UserInput.in.nextLine();
+                    CW.newLine();
+                    if (Checkout.userWantsReceipt(answer)) {
+                        Checkout.receiptPrinterDelux(i);
+                        CW.newLine();
+                        washMenu(i);
+                    }
+                    else {
+                        CW.newLine();
+                        washMenu(i);
+                    }
+                    break;
                 case 4:
                     CW.newLine();
                     CW.print(CW.exitToMainMenuMsg());
@@ -184,7 +189,6 @@ public class Menu {
             washMenu(i);
         }
     }
-
     public static void washMenuOptions() {
         CW.printMenu(
                 "Wash Menu",
@@ -194,7 +198,6 @@ public class Menu {
                 "Exit to main menu"
         );
     }
-
     public static void adminMenu() {
         try {
             adminMenuOptions();
@@ -258,7 +261,6 @@ public class Menu {
             UserInput.intIn.next();
         }
     }
-
     private static void adminMenuOptions() {
         CW.printMenu(
                 "Admin Menu",
@@ -272,7 +274,6 @@ public class Menu {
                 "Exit to main menu"
         );
     }
-
     public static void adminPasswordSubmenu() {
         CW.print("Please input password");
         String pass = UserInput.in.nextLine();
@@ -284,55 +285,4 @@ public class Menu {
         CW.newLine();
         mainMenu();
     }
-
-    public static void receiptPrinter(int i, int j) {
-        int oldBalance = WashCard.washCardArrList.get(i).getBalance();
-        int newBalance;
-        newBalance = (oldBalance - j);
-        CW.print("ID: " + WashCard.washCardArrList.get(i).getId());
-        CW.print("Previous Balance: " + WashCard.washCardArrList.get(i).getBalance());
-        CW.print("Price of selected wash: " + j + ".");
-        CW.print("New balance: " + newBalance + ".");
-
-
-    }
-    /* public static void receiptMenu(int i) {
-        try {
-            receiptMenuOptions();
-            switch (UserInput.intIn.nextInt()) {
-                case 1:
-                    CW.newLine();
-                    receiptPrinter(i);
-                    CW.print("Thank you for your purchase, have a shine-tastic day!");
-                    CW.newLine();
-                    break;
-                case 2:
-                    CW.newLine();
-                    CW.print(CW.exitToMainMenuMsg());
-                    CW.newLine();
-                    mainMenu();
-                    break;
-                default:
-                    CW.newLine();
-                    CW.print(CW.defaultMenuMsg());
-                    receiptMenu(i);
-                    break;
-            }
-        } catch (InputMismatchException e) {
-            CW.newLine();
-            CW.print(CW.inputMismatchExceptionMsg());
-            CW.newLine();
-            UserInput.intIn.next();
-        }
-    }
-    public static void receiptMenuOptions() {
-        CW.printMenu(
-                "Would you like a receipt?",
-                "Yes",
-                "No"
-        );
-
-    }
-
-     */
 }

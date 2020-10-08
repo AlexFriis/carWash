@@ -6,7 +6,6 @@ public class CW {
     public static void newLine() {
         System.out.println();
     }
-
     /**
      * Prints a menu with any amount of menu options.
      * @param menuNameString name of the menu as *Menu name*.
@@ -28,23 +27,18 @@ public class CW {
         }
         System.out.println(menuBars());
     }
-
     public static String bars() {
         return ("\n---------------------------------------------------------------\n");
     }
-
     public static String menuBars() {
         return ("\n---------------------------------------------------------------\n");
     }
-
     public static String headline() {
         return ("----------------------SuperShine Car Wash----------------------");
     }
-
     public static String exitSystemMsg() {
         return ("Exiting system, have a shine-tastic day!");
     }
-
     public static final String defaultMenuMsg = "Input format is not valid!";
     public static String defaultMenuMsg() {
         return ("Input format is not valid!");
@@ -54,11 +48,9 @@ public class CW {
     public static String exitToMainMenuMsg() {
         return ("Exiting to main menu!");
     }
-
     public static String inputMismatchExceptionMsg() {
         return ("Please enter the right input format!");
     }
-
     public static void print(String text) {
         System.out.println(text);
     }

@@ -11,28 +11,22 @@ public class WashCard {
     static ArrayList<WashCard> washCardArrList = new ArrayList<>();
     public WashCard() {
     }
-
     public WashCard(int id, int balance) {
         this.id = id;
         this.balance = balance;
     }
-
     public void setId(int id) {
         this.id = id;
     }
-
     public int getId() {
         return id;
     }
-
     public void setBalance(int balance) {
         this.balance = balance;
     }
-
     public int getBalance() {
         return balance;
     }
-
     public static void addWashCard() {
         int id = WashCardIdGenerator.idGenerator();
         int balance;
@@ -44,7 +38,6 @@ public class WashCard {
         CW.newLine();
         washCardArrList.add(new WashCard(id, balance));
     }
-
     public static void deleteWashCard() {
         int i;
         if (washCardArrListSizeNotZero()) {
@@ -77,7 +70,6 @@ public class WashCard {
         }
         CW.newLine();
     }
-
     public static void listAllWashCards() {
         if (washCardArrListSizeNotZero()) {
             CW.print("WashCard Information:" + CW.bars());
@@ -91,7 +83,6 @@ public class WashCard {
         }
         CW.print(CW.bars());
     }
-
     public static void rechargeBalance () {
         if (washCardArrListSizeNotZero()) {
             try {
@@ -131,7 +122,6 @@ public class WashCard {
         }
         CW.newLine();
     }
-
     public static void getWashCardBalanceFromId() {
         if (washCardArrListSizeNotZero()) {
             CW.print("Please specify WashCard ID");
@@ -153,16 +143,6 @@ public class WashCard {
             CW.print(CW.noWashCardsRegisteredMsg());
         }
     }
-
-    public static WashCard getWashCardById(int washCardId) {
-        var WSC = WashCard.washCardArrList.stream().filter(washCard -> washCardId == washCard.getId()).findFirst().get();
-        if (WSC == null) {
-            CW.print("That Wash card ID does not exist.");
-            return null;
-        }
-        return WSC;
-    }
-
     private static void checkArrListForMatchingId(int oldId) {
         for (i = 0; i < washCardArrList.size(); i++) {
             if (washCardArrListIdEqualsIdIn(i, oldId)) {
@@ -177,7 +157,7 @@ public class WashCard {
             }
         }
     }
-    public static void changeInfo () {
+    public static void checkID() {
         if (washCardArrListSizeNotZero()) {
             try {
                 CW.print("Please specify Wash Card ID.");
@@ -199,7 +179,6 @@ public class WashCard {
         }
         CW.newLine();
     }
-
     private static boolean washCardArrListSizeNotZero() {
         return (washCardArrList.size() != 0);
     }
