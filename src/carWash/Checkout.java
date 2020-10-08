@@ -42,18 +42,21 @@ public class Checkout {
         switch (i) {
             case 1:
                 price = getPriceEcon();
+                Menu.receiptMenu(i);
                 break;
             case 2:
                 price = getPriceStandard();
+                Menu.receiptMenu(i);
                 break;
             case 3:
                 price = getPriceDeluxe();
+                Menu.receiptMenu(i);
                 break;
             default:
                 System.exit(0);
                 break;
         }
-        return i;
+    return i;
     }
 
 

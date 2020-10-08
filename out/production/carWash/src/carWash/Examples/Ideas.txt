@@ -103,3 +103,76 @@ Design.printMenu(
             }
             CW.newLine();
         }
+
+CHECKOUT STUFF --------------------
+
+
+    public void receiptMenu(Receipt r) {
+        try {
+            washCheckoutOptions();
+            switch (UserInput.intIn.nextInt()) {
+                case 1:
+                    CW.newLine();
+                    //r.printReceipt();
+                    CW.print("Thank you for your purchase, have a shine-tastic day!");
+                    CW.newLine();
+                    break;
+                case 2:
+                    CW.newLine();
+                    CW.print("Thank you for your purchase, have a shine-tastic day!");
+                    return;
+                default:
+                    CW.newLine();
+                    CW.print(CW.defaultMenuMsg());
+                    receiptMenu(r);
+                    break;
+            }
+        } catch (InputMismatchException e) {
+            CW.newLine();
+            CW.print(CW.inputMismatchExceptionMsg());
+            CW.newLine();
+            UserInput.intIn.next();
+        }
+    }
+
+
+    RECEIPT MENU---------------
+    public static void receiptMenu(int i) {
+            try {
+                receiptMenuOptions();
+                switch (UserInput.intIn.nextInt()) {
+                    case 1:
+                        CW.newLine();
+                        receiptPrinter(i);
+                        CW.print("Thank you for your purchase, have a shine-tastic day!");
+                        CW.newLine();
+                        break;
+                    case 2:
+                        CW.newLine();
+                        CW.print(CW.exitToMainMenuMsg());
+                        CW.newLine();
+                        mainMenu();
+                        break;
+                    default:
+                        CW.newLine();
+                        CW.print(CW.defaultMenuMsg());
+                        receiptMenu(i);
+                        break;
+                }
+            } catch (InputMismatchException e) {
+                CW.newLine();
+                CW.print(CW.inputMismatchExceptionMsg());
+                CW.newLine();
+                UserInput.intIn.next();
+                //washMenu(i);
+            }
+        }
+
+        private static void receiptMenuOptions() {
+            CW.printMenu(
+                    "Would you like a receipt?",
+                    "Yes",
+                    "No"
+            );
+
+        }
