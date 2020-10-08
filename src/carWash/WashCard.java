@@ -14,19 +14,15 @@ public class WashCard {
         this.id = id;
         this.balance = balance;
     }
-
     public int getId() {
         return id;
     }
-
     public void setBalance(int balance) {
         this.balance = balance;
     }
-
     public int getBalance() {
         return balance;
     }
-
     public static void addWashCard() {
         int id = WashCardIdGenerator.idGenerator();
         int balance;
@@ -38,7 +34,6 @@ public class WashCard {
         CW.newLine();
         washCardArrList.add(new WashCard(id, balance));
     }
-
     public static void deleteWashCard() {
         int i;
         if (washCardArrListSizeNotZero()) {
@@ -71,7 +66,6 @@ public class WashCard {
         }
         CW.newLine();
     }
-
     public static void listAllWashCards() {
         if (washCardArrListSizeNotZero()) {
             CW.print("WashCard Information:" + CW.bars());
@@ -84,7 +78,6 @@ public class WashCard {
         }
         CW.print(CW.bars());
     }
-
     public static void rechargeBalance() {
         if (washCardArrListSizeNotZero()) {
             try {
@@ -96,6 +89,7 @@ public class WashCard {
                         int oldBalance = washCardArrList.get(i).getBalance();
                         CW.print("*Current Balance*");
                         CW.print(oldBalance + " DKK");
+                        CW.newLine();
                         CW.print("Please enter the amount you want to add");
                         int newBalance = UserInput.intIn();
                         int updatedBalance = oldBalance + newBalance;
@@ -123,7 +117,6 @@ public class WashCard {
         }
         CW.newLine();
     }
-
     public static void getWashCardBalanceFromId() {
         if (washCardArrListSizeNotZero()) {
             CW.print("Please specify WashCard ID");
@@ -143,7 +136,6 @@ public class WashCard {
             CW.print(CW.noWashCardsRegisteredMsg());
         }
     }
-
     private static void checkArrListForMatchingId(int oldId) {
         for (i = 0; i < washCardArrList.size(); i++) {
             if (washCardArrListIdEqualsIdIn(i, oldId)) {
@@ -157,7 +149,6 @@ public class WashCard {
             }
         }
     }
-
     public static void checkID() {
         if (washCardArrListSizeNotZero()) {
             try {
@@ -179,19 +170,15 @@ public class WashCard {
         }
         CW.newLine();
     }
-
     private static boolean washCardArrListSizeNotZero() {
         return (washCardArrList.size() != 0);
     }
-
     private static boolean washCardArrListIndexNotVariableIn() {
         return i == washCardArrList.size() - 1;
     }
-
     private static boolean washCardArrListIdEqualsIdIn(int i, int Id) {
         return (washCardArrList.get(i).getId() == Id);
     }
-
     private static void outputWashCardList(int i) {
         CW.print("ID: " + washCardArrList.get(i).getId());
         CW.print("Balance: " + washCardArrList.get(i).getBalance());

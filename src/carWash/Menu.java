@@ -4,6 +4,7 @@ import java.util.InputMismatchException;
 
 
 public class Menu {
+    private static boolean userContinue = true;
     public static int economyWashCounter = 0;
     public static int standardWashCounter = 0;
     public static int deluxeWashCounter = 0;
@@ -16,7 +17,6 @@ public class Menu {
         Price.printTimeAndDate();
         mainMenu();
     }
-
     public static void mainMenu() {
         try {
             mainMenuOptions();
@@ -36,7 +36,7 @@ public class Menu {
                     break;
                 case 4:
                     CW.newLine();
-                    adminPasswordSubmenu();
+                    adminMenu();
                     break;
                 case 5:
                     CW.newLine();
@@ -58,7 +58,6 @@ public class Menu {
         }
         CW.newLine();
     }
-
     private static void mainMenuOptions() {
         CW.printMenu(
                 "Main menu",
@@ -69,41 +68,40 @@ public class Menu {
                 "Exit program"
         );
     }
-
     public static void washCardMenu() {
-        try {
-            washCardMenuOptions();
-            switch (UserInput.intIn.nextInt()) {
-                case 1:
-                    CW.newLine();
-                    WashCard.getWashCardBalanceFromId();
-                    washCardMenu();
-                    break;
-                case 2:
-                    CW.newLine();
-                    WashCard.rechargeBalance();
-                    washCardMenu();
-                    break;
-                case 3:
-                    CW.newLine();
-                    CW.print(CW.exitToMainMenuMsg());
-                    CW.newLine();
-                    mainMenu();
-                    break;
-                default:
-                    CW.newLine();
-                    CW.print(CW.defaultMenuMsg());
-                    washCardMenu();
-                    break;
+        while (userContinue) {
+            try {
+                washCardMenuOptions();
+                switch (UserInput.intIn.nextInt()) {
+                    case 1:
+                        CW.newLine();
+                        WashCard.getWashCardBalanceFromId();
+                        break;
+                    case 2:
+                        CW.newLine();
+                        WashCard.rechargeBalance();
+                        break;
+                    case 3:
+                        CW.newLine();
+                        CW.print(CW.exitToMainMenuMsg());
+                        CW.newLine();
+                        userContinue = false;
+                        mainMenu();
+                        break;
+                    default:
+                        CW.newLine();
+                        CW.print(CW.defaultMenuMsg());
+                        washCardMenu();
+                        break;
+                }
+            } catch (InputMismatchException e) {
+                CW.newLine();
+                CW.print(CW.inputMismatchExceptionMsg());
+                CW.newLine();
+                UserInput.intIn.next();
             }
-        } catch (InputMismatchException e) {
-            CW.newLine();
-            CW.print(CW.inputMismatchExceptionMsg());
-            CW.newLine();
-            UserInput.intIn.next();
         }
     }
-
     private static void washCardMenuOptions() {
         CW.printMenu(
                 "Wash Card Menu",
@@ -112,7 +110,6 @@ public class Menu {
                 "Exit to main menu"
         );
     }
-
     public static void washMenu(int i) {
         String answer;
         try {
@@ -207,7 +204,6 @@ public class Menu {
             washMenu(i);
         }
     }
-
     public static void washMenuOptions() {
         CW.printMenu(
                 "Wash Menu",
@@ -217,65 +213,60 @@ public class Menu {
                 "Exit to main menu"
         );
     }
-
     public static void adminMenu() {
-        try {
-            adminMenuOptions();
-            switch (UserInput.intIn.nextInt()) {
-                case 1:
-                    CW.newLine();
-                    WashCard.listAllWashCards();
-                    adminMenu();
-                    break;
-                case 2:
-                    CW.newLine();
-                    WashCard.deleteWashCard();
-                    adminMenu();
-                    break;
-                case 3:
-                    CW.newLine();
-                    CW.print(AdminFunctions.printEconomyStatistics());
-                    adminMenu();
-                    break;
-                case 4:
-                    CW.newLine();
-                    CW.print(AdminFunctions.printStandardStatistics());// function that lists amount of standard washes bought + discount washes
-                    adminMenu();
-                    break;
-                case 5:
-                    CW.newLine();
-                    CW.print(AdminFunctions.printDeluxeStatistics());
-                    adminMenu();
-                    break;
-                case 6:
-                    CW.newLine();
-                    CW.print(AdminFunctions.printTotalStatistics() + "\nOf which: \n"
-                            + AdminFunctions.printEconomyStatistics() + "\n"
-                            + AdminFunctions.printStandardStatistics() + "\n"
-                            + AdminFunctions.printDeluxeStatistics());
+        while (userContinue) {
+            try {
+                adminMenuOptions();
+                switch (UserInput.intIn.nextInt()) {
+                    case 1:
+                        CW.newLine();
+                        WashCard.listAllWashCards();
+                        break;
+                    case 2:
+                        CW.newLine();
+                        WashCard.deleteWashCard();
+                        break;
+                    case 3:
+                        CW.newLine();
+                        CW.print(AdminFunctions.printEconomyStatistics());
+                        break;
+                    case 4:
+                        CW.newLine();
+                        CW.print(AdminFunctions.printStandardStatistics());// function that lists amount of standard washes bought + discount washes
+                        break;
+                    case 5:
+                        CW.newLine();
+                        CW.print(AdminFunctions.printDeluxeStatistics());
+                        break;
+                    case 6:
+                        CW.newLine();
+                        CW.print(AdminFunctions.printTotalStatistics() + "\nOf which: \n"
+                                + AdminFunctions.printEconomyStatistics() + "\n"
+                                + AdminFunctions.printStandardStatistics() + "\n"
+                                + AdminFunctions.printDeluxeStatistics());
 
-                    adminMenu();
-                    break;
-                case 7:
-                    CW.newLine();
-                    CW.print(CW.exitToMainMenuMsg());
-                    CW.newLine();
-                    mainMenu();
-                    break;
-                default:
-                    CW.newLine();
-                    CW.print(CW.defaultMenuMsg());
-                    washCardMenu();
-                    break;
+                        break;
+                    case 7:
+                        CW.newLine();
+                        CW.print(CW.exitToMainMenuMsg());
+                        CW.newLine();
+                        userContinue = false;
+                        mainMenu();
+                        break;
+                    default:
+                        CW.newLine();
+                        CW.print(CW.defaultMenuMsg());
+                        washCardMenu();
+                        break;
+                }
+            } catch (InputMismatchException e) {
+                CW.newLine();
+                CW.print(CW.inputMismatchExceptionMsg());
+                CW.newLine();
+                UserInput.intIn.next();
             }
-        } catch (InputMismatchException e) {
-            CW.newLine();
-            CW.print(CW.inputMismatchExceptionMsg());
-            CW.newLine();
-            UserInput.intIn.next();
         }
     }
-
     private static void adminMenuOptions() {
         CW.printMenu(
                 "Admin Menu",
@@ -287,17 +278,5 @@ public class Menu {
                 "Show amount of total bought washes",
                 "Exit to main menu"
         );
-    }
-
-    public static void adminPasswordSubmenu() {
-        CW.print("Please input password");
-        String pass = UserInput.in.nextLine();
-        if (pass.equals("1234")) {
-            adminMenu();
-        }
-        CW.newLine();
-        CW.print("Password: \"" + pass + "\" is incorrect. Returning to main menu!");
-        CW.newLine();
-        mainMenu();
     }
 }

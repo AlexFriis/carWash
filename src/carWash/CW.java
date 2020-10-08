@@ -29,45 +29,34 @@ public class CW {
         }
         System.out.println(menuBars());
     }
-
     public static String bars() {
         return ("\n---------------------------------------------------------------\n");
     }
-
     public static String menuBars() {
         return ("\n---------------------------------------------------------------\n");
     }
-
     public static String headline() {
         return ("----------------------SuperShine Car Wash----------------------");
     }
-
     public static String exitSystemMsg() {
         return ("Exiting system, have a shine-tastic day!");
     }
-
     public static final String defaultMenuMsg = "Input format is not valid!";
-
     public static String defaultMenuMsg() {
         return ("Input format is not valid!");
     }
-
     public static String noWashCardsRegisteredMsg() {
         return "System has no WashCards registered! Returning to menu";
     }
-
     public static String noWashCardsEqualToInputMsg(int id) {
         return "No WashCard registered to " + id;
     }
-
     public static String exitToMainMenuMsg() {
         return ("Exiting to main menu!");
     }
-
     public static String inputMismatchExceptionMsg() {
         return ("Please enter the right input format!");
     }
-
     public static void print(String text) {
         System.out.println(text);
     }
