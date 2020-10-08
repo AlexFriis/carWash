@@ -39,6 +39,7 @@ public class Checkout {
 
     public static int doCheckout(int i) {
         int price;
+
         switch (i) {
             case 1:
                 price = getPriceEcon();
@@ -58,6 +59,9 @@ public class Checkout {
         }
     return i;
     }
+    public static void doNewCheckout(int i) {
+
+    }
 
 
     public static void washCheckoutOptions() {
@@ -65,6 +69,13 @@ public class Checkout {
                 "Yes",
                 "No");
 
+    }
+    public static boolean userWantsReceipt(String answer) {
+        boolean userWantsReceipt = false;
+        if (answer.toLowerCase().equals("yes")) {
+            userWantsReceipt = true;
+        }
+        return userWantsReceipt;
     }
 
 

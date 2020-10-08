@@ -39,7 +39,7 @@ public class Menu {
                     break;
                 case 2:
                     CW.newLine();
-                    washMenu();
+                    WashCard.changeInfo();
                     break;
                 case 3:
                     CW.newLine();
@@ -80,7 +80,6 @@ public class Menu {
                 "Exit program"
         );
     }
-
     public static void washCardMenu() {
         try {
             washCardMenuOptions();
@@ -114,7 +113,6 @@ public class Menu {
             UserInput.intIn.next();
         }
     }
-
     private static void washCardMenuOptions() {
         CW.printMenu(
                 "Wash Card Menu",
@@ -123,11 +121,9 @@ public class Menu {
                 "Exit to main menu"
         );
     }
-
-    public static void washMenu() {
-        WashCard.changeInfo();
-
+    public static void washMenu(int i) {
         try {
+            UserInput.intIn.nextInt();
             washMenuOptions();
             switch (UserInput.intIn.nextInt()) {
                 case 1:
@@ -135,12 +131,17 @@ public class Menu {
                     Menu.totalWashCounter++;
                     CW.newLine();
                     Checkout.printEconomy();
+                    CW.print("Do you want a receipt?");
+                    String answer = UserInput.in.nextLine();
                     CW.newLine();
-                    Checkout.doCheckout(1);
+                    if (Checkout.userWantsReceipt()) {
+                        receiptPrinter(i);
+                    }
+                    else {
+                        washMenu(i);
+                    }
                     // function that does econ wash
                     // prompts if user wants a receipt, if yes prints it out
-                    washMenu();
-
                     break;
                 case 2:
                     Menu.standardWashCounter++;
@@ -148,11 +149,10 @@ public class Menu {
                     CW.newLine();
                     Checkout.printStandard();
                     CW.newLine();
-                    Checkout.doCheckout(2);
+                    Checkout.doCheckout(i);
                     // function that does stand. wash
                     // prompts if user wants a receipt, if yes prints it out
-                    washMenu();
-
+                    washMenu(i);
                     break;
                 case 3:
                     Menu.deluxeWashCounter++;
@@ -160,11 +160,10 @@ public class Menu {
                     CW.newLine();
                     Checkout.printDeluxe();
                     CW.newLine();
-                    Checkout.doCheckout(3);
+                    Checkout.doCheckout(i);
                     // function that does delux wash
                     // prompts if user wants a receipt, if yes prints it out
-                    washMenu();
-
+                    washMenu(i);
                 case 4:
                     CW.newLine();
                     CW.print(CW.exitToMainMenuMsg());
@@ -174,7 +173,7 @@ public class Menu {
                 default:
                     CW.newLine();
                     CW.print(CW.defaultMenuMsg());
-                    washMenu();
+                    washMenu(i);
                     break;
             }
         } catch (InputMismatchException e) {
@@ -182,7 +181,7 @@ public class Menu {
             CW.print(CW.inputMismatchExceptionMsg());
             CW.newLine();
             UserInput.intIn.next();
-            washMenu();
+            washMenu(i);
         }
     }
 

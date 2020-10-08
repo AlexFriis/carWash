@@ -166,7 +166,7 @@ public class WashCard {
     private static void checkArrListForMatchingId(int oldId) {
         for (i = 0; i < washCardArrList.size(); i++) {
             if (washCardArrListIdEqualsIdIn(i, oldId)) {
-                Menu.washMenuOptions();
+                Menu.washMenu(i);
                 break;
             }
             else if (washCardArrListIndexNotVariableIn()) {
@@ -181,10 +181,9 @@ public class WashCard {
         if (washCardArrListSizeNotZero()) {
             try {
                 CW.print("Please specify Wash Card ID.");
-                int oldId = UserInput.intIn();
+                int oldId = UserInput.intIn.nextInt();
                 CW.newLine();
                 checkArrListForMatchingId(oldId);
-                Menu.washMenuOptions();
             } catch (InputMismatchException e) {
                 CW.newLine();
                 CW.print(CW.inputMismatchExceptionMsg());
@@ -202,7 +201,7 @@ public class WashCard {
     }
 
     private static boolean washCardArrListSizeNotZero() {
-        return (!washCardArrList.isEmpty());
+        return (washCardArrList.size() != 0);
     }
     private static boolean washCardArrListIndexNotVariableIn() {
         return i == washCardArrList.size() - 1;
