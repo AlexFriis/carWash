@@ -124,7 +124,10 @@ public class Menu {
                     CW.newLine();
                     Checkout.printEconomy(i);
                     CW.newLine();
-                    CW.print("Do you want a receipt?");
+                    CW.print("Do you want a receipt?"
+                            + "\n"
+                            + "Yes/No"
+                    );
                     answer = UserInput.in.nextLine();
                     CW.newLine();
                     if (Checkout.userWantsReceipt(answer)) {
@@ -132,7 +135,10 @@ public class Menu {
                         CW.newLine();
                         washMenu(i);
                     } else {
-                        washMenu(i);
+                        CW.newLine();
+                        CW.print("Thank you for your purchase. Have a Shine-tastic day!");
+                        CW.newLine();
+                        mainMenu();
                     }
                     break;
                 case 2:
@@ -141,7 +147,10 @@ public class Menu {
                     CW.newLine();
                     Checkout.printStandard(i);
                     CW.newLine();
-                    CW.print("Do you want a receipt?");
+                    CW.print("Do you want a receipt?"
+                            + "\n"
+                            + "Yes/No"
+                    );
                     answer = UserInput.in.nextLine();
                     CW.newLine();
                     if (Checkout.userWantsReceipt(answer)) {
@@ -150,7 +159,9 @@ public class Menu {
                         washMenu(i);
                     } else {
                         CW.newLine();
-                        washMenu(i);
+                        CW.print("Thank you for your purchase. Have a Shine-tastic day!");
+                        CW.newLine();
+                        mainMenu();
                     }
                     break;
                 case 3:
@@ -159,7 +170,10 @@ public class Menu {
                     CW.newLine();
                     Checkout.printDeluxe(i);
                     CW.newLine();
-                    CW.print("Do you want a receipt?");
+                    CW.print("Do you want a receipt?"
+                            + "\n"
+                            + "Yes/No"
+                    );
                     answer = UserInput.in.nextLine();
                     CW.newLine();
                     if (Checkout.userWantsReceipt(answer)) {
@@ -168,7 +182,9 @@ public class Menu {
                         washMenu(i);
                     } else {
                         CW.newLine();
-                        washMenu(i);
+                        CW.print("Thank you for your purchase. Have a Shine-tastic day!");
+                        CW.newLine();
+                        mainMenu();
                     }
                     break;
                 case 4:
